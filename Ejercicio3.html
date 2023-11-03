@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><strong>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, y <span class="math inline">\(X_3\)</span> los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es <span class="math inline">\(N_3(\mu, \Sigma)\)</span> con <span class="math inline">\(\mu=(0.7, 0.8, 0.9)'\)</span> y </strong> <span class="math display">\[\begin{pmatrix}
+<p><strong>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, y <span class="math inline">\(X_3\)</span> los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es <span class="math inline">\(N_3(\mu, \Sigma)\)</span> con <span class="math inline">\(\mu=(0.7, 0.8, 0.9)'\)</span> y </strong> <span class="math display">\[\Sigma=\begin{pmatrix}
 2 &amp; -1 &amp; 0\\
 -1 &amp; 2 &amp; 0\\
 0 &amp; 0 &amp; 1
@@ -78,6 +78,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Notemos que las variables <span class="math inline">\(X_1, X_2, X_3\)</span> tienen distribuciones normales <span class="math inline">\(N(0.7, \sqrt{2}), N(0.8, \sqrt{2}), N(0.9, 1)\)</span> respectivamente</p>
 <p>Como son independientes, <span class="math inline">\(X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 1})=N(2.4, \sqrt{5})\)</span>. Por último, al hacer el cociente con 3, obtenemos que <span class="math inline">\(W\)</span> sigue una distribución normal <span class="math inline">\(N(0.8, \sqrt{5})\)</span>.</p>
 <p><strong>- Encuéntrese la distribución de <span class="math inline">\((X_1, X_2)'\)</span> condicionada a que <span class="math inline">\(W\)</span> vale 1.</strong></p>
+<p>Llamemos <span class="math inline">\(Y=(X, W)\)</span>, donde <span class="math inline">\(X=(X_1, X_2)\)</span>. Entonces podemos escribir la matriz de covarianzas de <span class="math inline">\(Y\)</span> particionada de la forma <span class="math display">\[\begin{pmatrix}
+\Sigma_{11} &amp; \Sigma_{12}\\
+\Sigma_{21} &amp; \Sigma_{22}
+\end{pmatrix}\]</span> donde <span class="math inline">\(\Sigma_{11} = Var(X) \in \mathcal{M}_{2\times2}, \Sigma_{22}=Var(W)\in \mathcal{M}_{1\times1}, \Sigma_{12}=Cov(X, W) \in \mathcal{M}_{2\times1}, \Sigma_{21}=\Sigma_{12}'\in \mathcal{M}_{1\times2}\)</span>.</p>
+<p>El vector <span class="math inline">\(X=(X_1, X_2)\)</span> tiene una distribución <span class="math inline">\(N_2(\mu_X, \Sigma_X)\)</span>, donde <span class="math inline">\(\mu_X=(0.7, 0.8)'\)</span> y <span class="math display">\[\Sigma_X=\begin{pmatrix}
+2 &amp; -1\\
+-1 &amp; 2
+\end{pmatrix}.\]</span> Por otra parte, hemos visto que <span class="math inline">\(W\)</span> sigue una distribución <span class="math inline">\(N(\mu_W, \Sigma_W)\)</span>, con <span class="math inline">\(\mu_W=0.8\)</span>, <span class="math inline">\(\Sigma_W=5\)</span>. Entonces, <span class="math inline">\(\Sigma_{11} = Var(X) = \Sigma_X\)</span>. En el caso de <span class="math inline">\(W\)</span>, <span class="math inline">\(\Sigma_{22} = 5\)</span>. Falta calcular la covarianza entre <span class="math inline">\(X\)</span> y <span class="math inline">\(W\)</span>. <span class="math display">\[Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}\]</span> Para el primer término, sabemos que <span class="math inline">\(Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8\)</span></p>
+<p>Para el segundo, tenemos <span class="math inline">\(Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8\)</span></p>
+<p>Obtenemos así la expresión <span class="math display">\[\Sigma=\begin{pmatrix}
+2 &amp; -1 &amp; ?\\
+-1 &amp; 2 &amp; ?\\
+? &amp; ? &amp; 5
+\end{pmatrix}.\]</span></p>
+<p>En este punto, la distribución de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(W=1\)</span> es normal con vector de esperanzas <span class="math inline">\(E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)\)</span> y matriz de covarianzas <span class="math display">\[Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\]</span></p>
+<p><span class="math display">\[E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}(1-0.8)\]</span></p>
+<p><span class="math display">\[Var(X|W=1)=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}\begin{pmatrix}Cov(X_1, W) &amp; Cov(X_2,W)\end{pmatrix}\]</span></p>
 <p><strong>- ¿Son <span class="math inline">\(X_2\)</span> y <span class="math inline">\(W\)</span> independientes?</strong></p>
 
 </main>

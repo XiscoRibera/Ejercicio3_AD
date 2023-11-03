@@ -6,7 +6,7 @@ editor: visual
 ---
 
 **Sean $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y **
-$$\begin{pmatrix}
+$$\Sigma=\begin{pmatrix}
 2 & -1 & 0\\
 -1 & 2 & 0\\
 0 & 0 & 1
@@ -22,6 +22,44 @@ Como son independientes, $X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 
 
 **- Encuéntrese la distribución de $(X_1, X_2)'$ condicionada a que $W$ vale 1.**
 
+Llamemos $Y=(X, W)$, donde $X=(X_1, X_2)$. Entonces podemos escribir la matriz de covarianzas de $Y$ particionada de la forma
+$$\begin{pmatrix}
+\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{pmatrix}$$
+donde $\Sigma_{11} = Var(X) \in \mathcal{M}_{2\times2}, \Sigma_{22}=Var(W)\in \mathcal{M}_{1\times1}, \Sigma_{12}=Cov(X, W) \in \mathcal{M}_{2\times1}, \Sigma_{21}=\Sigma_{12}'\in \mathcal{M}_{1\times2}$.
+
+El vector $X=(X_1, X_2)$ tiene una distribución $N_2(\mu_X, \Sigma_X)$, donde $\mu_X=(0.7, 0.8)'$ y
+$$\Sigma_X=\begin{pmatrix}
+2 & -1\\
+-1 & 2
+\end{pmatrix}.$$
+Por otra parte, hemos visto que $W$ sigue una distribución $N(\mu_W, \Sigma_W)$, con $\mu_W=0.8$, $\Sigma_W=5$.
+Entonces, $\Sigma_{11} = Var(X) = \Sigma_X$. En el caso de $W$, $\Sigma_{22} = 5$. Falta calcular la covarianza entre $X$ y $W$.
+$$Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}$$
+Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8$
+
+Para el segundo, tenemos $Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8$
+
+Obtenemos así la expresión
+$$\Sigma=\begin{pmatrix}
+2 & -1 & ?\\
+-1 & 2 & ?\\
+? & ? & 5
+\end{pmatrix}.$$
+
+En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
+
+
+$$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}(1-0.8)$$
+
+$$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}\begin{pmatrix}Cov(X_1, W) & Cov(X_2,W)\end{pmatrix}$$
 
 
 **- ¿Son $X_2$ y $W$ independientes?**
+
+
+
+
+
+
