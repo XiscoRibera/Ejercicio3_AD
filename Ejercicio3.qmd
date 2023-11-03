@@ -1,0 +1,27 @@
+---
+title: "Ejercicio 3"
+author: "Irene Julià y Xisco Ribera"
+format: html
+editor: visual
+---
+
+**Sean $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y **
+$$\begin{pmatrix}
+2 & -1 & 0\\
+-1 & 2 & 0\\
+0 & 0 & 1
+\end{pmatrix}.$$
+**Consideremos un nivel de solvencia medio para los tres bancos que se obtiene mediante el promedio $W=(X_1 + X_2 + X_3)/3$.**
+
+**- Calcúlese la distribución del nivel de solvencia medio W.**
+
+Notemos que las variables $X_1, X_2, X_3$ tienen distribuciones normales $N(0.7, \sqrt{2}), N(0.8, \sqrt{2}), N(0.9, 1)$ respectivamente
+
+Como son independientes, $X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 1})=N(2.4, \sqrt{5})$. Por último, al hacer el cociente con 3, obtenemos que $W$ sigue una distribución normal $N(0.8, \sqrt{5})$.
+
+
+**- Encuéntrese la distribución de $(X_1, X_2)'$ condicionada a que $W$ vale 1.**
+
+
+
+**- ¿Son $X_2$ y $W$ independientes?**
