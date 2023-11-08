@@ -5,61 +5,56 @@ format: html
 editor: visual
 ---
 
-**Sean $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y **
-$$\Sigma=\begin{pmatrix}
+**Sean** $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y $$\Sigma=\begin{pmatrix}
 2 & -1 & 0\\
 -1 & 2 & 0\\
 0 & 0 & 1
-\end{pmatrix}.$$
-**Consideremos un nivel de solvencia medio para los tres bancos que se obtiene mediante el promedio $W=(X_1 + X_2 + X_3)/3$.**
+\end{pmatrix}.$$ **Consideremos un nivel de solvencia medio para los tres bancos que se obtiene mediante el promedio** $W=(X_1 + X_2 + X_3)/3$.
 
-**- Calcúlese la distribución del nivel de solvencia medio W.**
+## Apartado 1
+
+**Calcúlese la distribución del nivel de solvencia medio W.**
 
 Notemos que las variables $X_1, X_2, X_3$ tienen distribuciones normales $N(0.7, \sqrt{2}), N(0.8, \sqrt{2}), N(0.9, 1)$ respectivamente
 
 Como son independientes, $X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 1})=N(2.4, \sqrt{5})$. Por último, al hacer el cociente con 3, obtenemos que $W$ sigue una distribución normal $N(0.8, \sqrt{5})$.
 
 
-**- Encuéntrese la distribución de $(X_1, X_2)'$ condicionada a que $W$ vale 1.**
+## Apartado 2
 
-Llamemos $Y=(X, W)$, donde $X=(X_1, X_2)$. Entonces podemos escribir la matriz de covarianzas de $Y$ particionada de la forma
-$$\begin{pmatrix}
+**Encuéntrese la distribución de $(X_1, X_2)'$ condicionada a que $W$ vale 1.**
+
+Llamemos $Y=(X, W)$, donde $X=(X_1, X_2)$. Entonces podemos escribir la matriz de covarianzas de $Y$ particionada de la forma $$\begin{pmatrix}
 \Sigma_{11} & \Sigma_{12}\\
 \Sigma_{21} & \Sigma_{22}
-\end{pmatrix}$$
-donde $\Sigma_{11} = Var(X) \in \mathcal{M}_{2\times2}, \Sigma_{22}=Var(W)\in \mathcal{M}_{1\times1}, \Sigma_{12}=Cov(X, W) \in \mathcal{M}_{2\times1}, \Sigma_{21}=\Sigma_{12}'\in \mathcal{M}_{1\times2}$.
+\end{pmatrix}$$ donde $\Sigma_{11} = Var(X) \in \mathcal{M}_{2\times2}, \Sigma_{22}=Var(W)\in \mathcal{M}_{1\times1}, \Sigma_{12}=Cov(X, W) \in \mathcal{M}_{2\times1}, \Sigma_{21}=\Sigma_{12}'\in \mathcal{M}_{1\times2}$.
 
-El vector $X=(X_1, X_2)$ tiene una distribución $N_2(\mu_X, \Sigma_X)$, donde $\mu_X=(0.7, 0.8)'$ y
-$$\Sigma_X=\begin{pmatrix}
+El vector $X=(X_1, X_2)$ tiene una distribución $N_2(\mu_X, \Sigma_X)$, donde $\mu_X=(0.7, 0.8)'$ y $$\Sigma_X=\begin{pmatrix}
 2 & -1\\
 -1 & 2
-\end{pmatrix}.$$
-Por otra parte, hemos visto que $W$ sigue una distribución $N(\mu_W, \Sigma_W)$, con $\mu_W=0.8$, $\Sigma_W=5$.
-Entonces, $\Sigma_{11} = Var(X) = \Sigma_X$. En el caso de $W$, $\Sigma_{22} = 5$. Falta calcular la covarianza entre $X$ y $W$.
-$$Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}$$
-Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8$
+\end{pmatrix}.$$ Por otra parte, hemos visto que $W$ sigue una distribución $N(\mu_W, \Sigma_W)$, con $\mu_W=0.8$, $\Sigma_W=5$. Entonces, $\Sigma_{11} = Var(X) = \Sigma_X$. En el caso de $W$, $\Sigma_{22} = 5$. Falta calcular la covarianza entre $X$ y $W$. $$Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}$$
 
-Para el segundo, tenemos $Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8$
+- Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8 = E\left(X_1\cdot\left(\frac{X_1+X_2+X_3}{3}\right)\right)-5.6 = E\left(\frac{X_1^2}{3}+\frac{X_1X_2}{3}+\frac{X_3X_1}{3}\right)-5.6 =$
 
-Obtenemos así la expresión
-$$\Sigma=\begin{pmatrix}
-2 & -1 & ?\\
--1 & 2 & ?\\
-? & ? & 5
+$= E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=\frac13E\left(X_1^2\right)+\frac13 E\left(X_1X_2\right)+\frac13E\left(X_3X_1\right)-5.6=$
+
+$=\frac13(Var(X_1)+(EX_1)^2)+\frac13 E\left(X_1\right)E\left(X_2\right)+\frac13E\left(X_3\right)E\left(X_1\right)-5.6 = \frac13\cdot 6.9 + \frac13\cdot 5.6 + \frac13 6.3-5.6=\frac{13}{15}$
+
+- Para el segundo, tenemos $Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8$, y de manera analoga, obtenemos que $Cov(X_2, W) =\frac{1}{15}$
+
+Obtenemos así la expresión $$\Sigma=\begin{pmatrix}
+2 & -1 & \frac{13}{15}\\
+-1 & 2 & \frac{1}{15}\\
+\frac{13}{15} & \frac{1}{15} & 5
 \end{pmatrix}.$$
 
 En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
-
 
 $$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}(1-0.8)$$
 
 $$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}\begin{pmatrix}Cov(X_1, W) & Cov(X_2,W)\end{pmatrix}$$
 
 
-**- ¿Son $X_2$ y $W$ independientes?**
+## Apartado 3
 
-
-
-
-
-
+**¿Son $X_2$ y $W$ independientes?**
