@@ -40,10 +40,20 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#apartado-1" id="toc-apartado-1" class="nav-link active" data-scroll-target="#apartado-1">Apartado 1</a></li>
+  <li><a href="#apartado-2" id="toc-apartado-2" class="nav-link" data-scroll-target="#apartado-2">Apartado 2</a></li>
+  <li><a href="#apartado-3" id="toc-apartado-3" class="nav-link" data-scroll-target="#apartado-3">Apartado 3</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -69,6 +79,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Repositorio del ejercicio: <a href="https://github.com/XiscoRibera/Ejercicio3_AD">https://github.com/XiscoRibera/Ejercicio3_AD</a></p>
 <p><strong>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, y <span class="math inline">\(X_3\)</span> los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres niveles es <span class="math inline">\(N_3(\mu, \Sigma)\)</span> con <span class="math inline">\(\mu=(0.7, 0.8, 0.9)'\)</span> y</strong> <span class="math display">\[\Sigma=(\sigma_{ij})=\begin{pmatrix}
 2 &amp; -1 &amp; 0\\
 -1 &amp; 2 &amp; 0\\
@@ -77,11 +88,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="apartado-1" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-1">Apartado 1</h2>
 <p><strong>Calcúlese la distribución del nivel de solvencia medio W.</strong></p>
-<p>Dado que la distribución conjunta de <span class="math inline">\((X_1, X_2, X_3)'\)</span> es normal multivariante, cada variable <span class="math inline">\(X_i\)</span> és normal univariante con media <span class="math inline">\(\mu_i\)</span> y <span class="math inline">\(\sigma_i^2=\sigma_{ii}\)</span>. Entonces, <span class="math display">\[X_1 \sim N(0.7, \sqrt2), \quad X_2 \sim N(0.8, \sqrt2), \quad X_3 \sim N(0.9, 1)\]</span> Sabemos que una combinación lineal de las tres variables será normal univariante, así que <span class="math inline">\(W=\frac13X_1 + \frac13X_2 + \frac13X_3\)</span> será normal univariante.</p>
+<p>Dado que la distribución conjunta de <span class="math inline">\((X_1, X_2, X_3)'\)</span> es normal multivariante, cada variable <span class="math inline">\(X_i\)</span> es normal univariante con media <span class="math inline">\(\mu_i\)</span> y <span class="math inline">\(\sigma_i^2=\sigma_{ii}\)</span>. Entonces, <span class="math display">\[X_1 \sim N(0.7, \sqrt2), \quad X_2 \sim N(0.8, \sqrt2), \quad X_3 \sim N(0.9, 1)\]</span> Sabemos que una combinación lineal de las tres variables será normal univariante, así que <span class="math inline">\(W=\frac13X_1 + \frac13X_2 + \frac13X_3\)</span> será normal univariante.</p>
 </section>
 <section id="apartado-2" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-2">Apartado 2</h2>
-<p><strong>Encuéntrese la distribución de <span class="math inline">\((X_1, X_2)'\)</span> condicionada a que <span class="math inline">\(W\)</span> vale 1.</strong></p>
+<p><strong>Encuéntrese la distribución de</strong> <span class="math inline">\((X_1, X_2)'\)</span> condicionada a que <span class="math inline">\(W\)</span> vale 1.</p>
 <p>Seguiremos el esquema de la ayuda del ejercicio.</p>
 <p>Llamemos <span class="math inline">\(Y=(X, W)\)</span>, donde <span class="math inline">\(X=(X_1, X_2)\)</span>. Entonces podemos escribir la matriz de covarianzas de <span class="math inline">\(Y\)</span> de la forma <span class="math display">\[\begin{pmatrix}
 \Sigma_{11} &amp; \Sigma_{12}\\
@@ -102,6 +113,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Falta calcular la covarianza entre <span class="math inline">\(X\)</span> y <span class="math inline">\(W\)</span>. <span class="math display">\[Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}\]</span></li>
 </ul>
+<p>En este apartado utilizaremos la fórmula de la varianza: <span class="math display">\[Var(X)=E(X^2)-(EX)^2 \Longrightarrow E(X^2)=Var(X)+(EX)^2\]</span></p>
 <p>Para el primer término, sabemos que <span class="math inline">\(Cov(X_1, W) = E(X_1W) - EX_1 \cdot EW\)</span>. <span class="math display">\[E\left(X_1\frac{X_1+X_2+X_3}{3}\right)-0.7E\left(\frac{X_1+X_2+X_3}{3}\right)=\frac13E(X_1^2+X_1X_2+X_1X_3)-\frac{0.7}{3}(EX_1+EX_2+EX_3)=\]</span></p>
 <p><span class="math display">\[\frac13\left[E(X_1^2)+E(X_1X_2)+E(X_1X_3)\right]-0.7\frac13(0.7+0.8+0.9)=\]</span> <span class="math display">\[\frac13\left[Var(X_1)+(EX_1)^2+EX_1EX_2 + Cov(X_1,X_2)+EX_1EX_3 + Cov(X_1,X_3)\right]-0.7\cdot0.8=\]</span> <span class="math display">\[\frac13\left[2+0.7^2+0.7\cdot0.8 -1 + 0.7\cdot0.9\right]-0.7\cdot0.8=\frac13\frac{67}{25}-\frac{14}{25}=\frac13.\]</span></p>
 <p>Para el segundo, tenemos <span class="math inline">\(Cov(X_2, W) = E(X_2W) - EX_2 \cdot EW\)</span>.</p>
@@ -118,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="apartado-3" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-3">Apartado 3</h2>
-<p><strong>¿Son <span class="math inline">\(X_2\)</span> y <span class="math inline">\(W\)</span> independientes?</strong></p>
+<p><strong>¿Son</strong> <span class="math inline">\(X_2\)</span> y <span class="math inline">\(W\)</span> independientes?</p>
 <p>No lo son, tenemos la situación <span class="math inline">\(X_2 \sim N(0.8, \sqrt2)\)</span> y <span class="math inline">\(W\sim N(0.8, \sqrt{1/3})\)</span>.</p>
 <p>Sabemos que si son independientes, se satisface que <span class="math inline">\(E[X_2W] = E[X_2]\cdot E[W]\)</span>, entonces el contrarrecíproco sería: si <span class="math inline">\(E[X_2W] \ne E[X_2]\cdot E[W]\)</span>, entonces no son independientes.</p>
 <p>Hemos calculado anteriormente la esperanza <span class="math inline">\(E[X_2W]\)</span> y hemos obtenido un valor de <span class="math inline">\(\frac{73}{75}\approx 0.973333\)</span>. En cambio, <span class="math inline">\(E[X_2]\cdot E[W] = 0.8\cdot0.8=6.4\)</span>. Claramente, <span class="math inline">\(E[X_2W] \ne E[X_2]\cdot E[W]\)</span>, entonces podemos afirmar que no son independientes.</p>

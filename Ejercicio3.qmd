@@ -1,11 +1,16 @@
 ---
 title: "Ejercicio 3"
 author: "Irene Julià y Xisco Ribera"
-format: html
+format:
+  html:
+    toc: true
 editor: visual
 ---
 
-**Sean** $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres niveles es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y $$\Sigma=(\sigma_{ij})=\begin{pmatrix}
+Repositorio del ejercicio: [https://github.com/XiscoRibera/Ejercicio3_AD](https://github.com/XiscoRibera/Ejercicio3_AD)
+
+
+**Sean $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres niveles es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y** $$\Sigma=(\sigma_{ij})=\begin{pmatrix}
 2 & -1 & 0\\
 -1 & 2 & 0\\
 0 & 0 & 1
@@ -15,7 +20,7 @@ editor: visual
 
 **Calcúlese la distribución del nivel de solvencia medio W.**
 
-Dado que la distribución conjunta de $(X_1, X_2, X_3)'$ es normal multivariante, cada variable $X_i$ és normal univariante con media $\mu_i$ y $\sigma_i^2=\sigma_{ii}$. Entonces, $$X_1 \sim N(0.7, \sqrt2), \quad X_2 \sim N(0.8, \sqrt2), \quad X_3 \sim N(0.9, 1)$$ Sabemos que una combinación lineal de las tres variables será normal univariante, así que $W=\frac13X_1 + \frac13X_2 + \frac13X_3$ será normal univariante.
+Dado que la distribución conjunta de $(X_1, X_2, X_3)'$ es normal multivariante, cada variable $X_i$ es normal univariante con media $\mu_i$ y $\sigma_i^2=\sigma_{ii}$. Entonces, $$X_1 \sim N(0.7, \sqrt2), \quad X_2 \sim N(0.8, \sqrt2), \quad X_3 \sim N(0.9, 1)$$ Sabemos que una combinación lineal de las tres variables será normal univariante, así que $W=\frac13X_1 + \frac13X_2 + \frac13X_3$ será normal univariante.
 
 ## Apartado 2
 
@@ -43,6 +48,8 @@ Vamos a calcular cada una de ellas:
 $$\frac19\left(2 + 2 -2 + 1\right) = \frac39 = \frac13.$$
 
 -   Falta calcular la covarianza entre $X$ y $W$. $$Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}$$
+
+En este apartado utilizaremos la fórmula de la varianza: $$Var(X)=E(X^2)-(EX)^2 \Longrightarrow E(X^2)=Var(X)+(EX)^2$$
 
 Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - EX_1 \cdot EW$. $$E\left(X_1\frac{X_1+X_2+X_3}{3}\right)-0.7E\left(\frac{X_1+X_2+X_3}{3}\right)=\frac13E(X_1^2+X_1X_2+X_1X_3)-\frac{0.7}{3}(EX_1+EX_2+EX_3)=$$
 
