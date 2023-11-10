@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><strong>Sean</strong> <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, y <span class="math inline">\(X_3\)</span> los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es <span class="math inline">\(N_3(\mu, \Sigma)\)</span> con <span class="math inline">\(\mu=(0.7, 0.8, 0.9)'\)</span> y <span class="math display">\[\Sigma=\begin{pmatrix}
+<p><strong>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, y <span class="math inline">\(X_3\)</span> los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es <span class="math inline">\(N_3(\mu, \Sigma)\)</span> con <span class="math inline">\(\mu=(0.7, 0.8, 0.9)'\)</span> y</strong> <span class="math display">\[\Sigma=\begin{pmatrix}
 2 &amp; -1 &amp; 0\\
 -1 &amp; 2 &amp; 0\\
 0 &amp; 0 &amp; 1
@@ -106,12 +106,14 @@ ul.task-list li input[type="checkbox"] {
 \frac{13}{15} &amp; \frac{1}{15} &amp; 5
 \end{pmatrix}.\]</span></p>
 <p>En este punto, la distribución de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(W=1\)</span> es normal con vector de esperanzas <span class="math display">\[E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)\]</span> y matriz de covarianzas <span class="math display">\[Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\]</span></p>
-<p><span class="math display">\[E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}(1-0.8)\]</span></p>
-<p><span class="math display">\[Var(X|W=1)=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}\begin{pmatrix}Cov(X_1, W) &amp; Cov(X_2,W)\end{pmatrix}\]</span></p>
+<p><span class="math display">\[E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac{13}{15}\\\frac{1}{15}\end{pmatrix}\frac15(1-0.8)=\begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}\approx \begin{pmatrix}0.7346667\\0.8026667\end{pmatrix}\]</span></p>
+<p><span class="math display">\[Var(X|W=1)=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}5^{-1}\begin{pmatrix}\frac{551}{750}&amp;\frac{301}{375}\end{pmatrix}=\begin{pmatrix}2.10795 &amp; -1.11794\\-1.11794 &amp; 2.12885\end{pmatrix}\]</span></p>
 </section>
 <section id="apartado-3" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-3">Apartado 3</h2>
 <p><strong>¿Son <span class="math inline">\(X_2\)</span> y <span class="math inline">\(W\)</span> independientes?</strong></p>
+<p>No lo son, hemos calculado anteriormente la esperanza <span class="math inline">\(E[X_2W]\)</span> y hemos obtenido un valor de <span class="math inline">\(\frac{97}{15}\approx 6.46667\)</span>. En cambio, <span class="math inline">\(E[X_2]\cdot E[W] = 0.8\cdot0.8=6.4\)</span>. Claremente, <span class="math inline">\(E[X_2W] \ne E[X_2]\cdot E[W]\)</span>, entonces podemos afirmar que no son independientes.</p>
+<p>Tiene sentido ya que una está formada a partir de la otra.</p>
 </section>
 
 </main>

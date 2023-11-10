@@ -5,7 +5,7 @@ format: html
 editor: visual
 ---
 
-**Sean** $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y $$\Sigma=\begin{pmatrix}
+**Sean $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y** $$\Sigma=\begin{pmatrix}
 2 & -1 & 0\\
 -1 & 2 & 0\\
 0 & 0 & 1
