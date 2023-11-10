@@ -5,7 +5,7 @@ format: html
 editor: visual
 ---
 
-**Sean $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y** $$\Sigma=\begin{pmatrix}
+**Sean $X_1$, $X_2$, y $X_3$ los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres niveles es $N_3(\mu, \Sigma)$ con $\mu=(0.7, 0.8, 0.9)'$ y** $$\Sigma=(\sigma_{ij})=\begin{pmatrix}
 2 & -1 & 0\\
 -1 & 2 & 0\\
 0 & 0 & 1
@@ -15,52 +15,85 @@ editor: visual
 
 **Calcúlese la distribución del nivel de solvencia medio W.**
 
-Notemos que las variables $X_1, X_2, X_3$ tienen distribuciones normales $N(0.7, \sqrt{2}), N(0.8, \sqrt{2}), N(0.9, 1)$ respectivamente
-
-Como son independientes, $X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 1})=N(2.4, \sqrt{5})$. Por último, al dividir entre 3, obtenemos que $W$ sigue una distribución normal $N(0.8, \sqrt{5})$.
-
+Dado que la distribución conjunta de $(X_1, X_2, X_3)'$ es normal multivariante, cada variable $X_i$ és normal univariante con media $\mu_i$ y $\sigma_i^2=\sigma_{ii}$. Entonces, 
+$$X_1 \sim N(0.7, \sqrt2), \quad X_2 \sim N(0.8, \sqrt2), \quad X_3 \sim N(0.9, 1)$$
+Sabemos que una combinación lineal de las tres variables será normal univariante, así que $W=\frac13X_1 + \frac13X_2 + \frac13X_3$ será normal univariante.
 
 ## Apartado 2
 
 **Encuéntrese la distribución de $(X_1, X_2)'$ condicionada a que $W$ vale 1.**
 
-Llamemos $Y=(X, W)$, donde $X=(X_1, X_2)$. Entonces podemos escribir la matriz de covarianzas de $Y$ particionada de la forma $$\begin{pmatrix}
+Seguiremos el esquema de la ayuda del ejercicio.
+
+Llamemos $Y=(X, W)$, donde $X=(X_1, X_2)$. Entonces podemos escribir la matriz de covarianzas de $Y$ de la forma $$\begin{pmatrix}
 \Sigma_{11} & \Sigma_{12}\\
 \Sigma_{21} & \Sigma_{22}
 \end{pmatrix}$$ donde $\Sigma_{11} = Var(X) \in \mathcal{M}_{2\times2}, \Sigma_{22}=Var(W)\in \mathcal{M}_{1\times1}, \Sigma_{12}=Cov(X, W) \in \mathcal{M}_{2\times1}, \Sigma_{21}=\Sigma_{12}'\in \mathcal{M}_{1\times2}$.
 
-El vector $X=(X_1, X_2)$ tiene una distribución $N_2(\mu_X, \Sigma_X)$, donde $\mu_X=(0.7, 0.8)'$ y $$\Sigma_X=\begin{pmatrix}
+Vamos a calcular cada una de ellas:
+
+- Para $\Sigma_{11}$, necesitamos la matriz de covarianzas de $X=(X_1, X_2)$, que tiene una distribución normal bivariante con vector de medias$(0.7, 0.8)'$ y varianza 
+$$\begin{pmatrix}
 2 & -1\\
 -1 & 2
-\end{pmatrix}.$$ Por otra parte, hemos visto que $W$ sigue una distribución $N(\mu_W, \Sigma_W)$, con $\mu_W=0.8$, $\Sigma_W=5$. Entonces, $\Sigma_{11} = Var(X) = \Sigma_X$. En el caso de $W$, $\Sigma_{22} = 5$. Falta calcular la covarianza entre $X$ y $W$. $$Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}$$
+\end{pmatrix}.$$
+Entonces,
+$$\Sigma_{11} = \begin{pmatrix}
+2 & -1\\
+-1 & 2
+\end{pmatrix}.$$
 
-- Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8 = E\left(X_1\cdot\left(\frac{X_1+X_2+X_3}{3}\right)\right)-5.6 =$ 
+- En el caso de $W$, solamente sabemos que es el promedio de las tres variables iniciales.
+$$Var(W)=Var\left(\frac{X_1+X_2+X_3}{3}\right)=\frac19Var(X_1+X_2+X_3) = \frac19\left(Var(X_1+X_2) + Var(X_3) + 2Cov(X_1+X_2, X_3)\right)$$
+$$= \frac19\left(Var(X_1) + Var(X_2) + 2Cov(X_1, X_2) + Var(X_3) + 2Cov(X_1, X_3) + 2Cov(X_2, X_3)\right).$$
+De la matriz de covarianzas, tenemos que $Cov(X_i, X_3) = 0, i=1,2$, y que $Cov(X_1, X_2) = -1$. También tenemos en la diagonal las varianzas, entonces
 
-$E\left(\frac{X_1^2}{3}+\frac{X_1X_2}{3}+\frac{X_3X_1}{3}\right)-5.6 = E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=$
+$$\frac19\left(2 + 2 -2 + 1\right) = \frac39 = \frac13.$$
 
-$E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=\frac13E\left(X_1^2\right)+\frac13 E\left(X_1X_2\right)+\frac13E\left(X_3X_1\right)-5.6=$
 
-$=\frac13(Var(X_1)+(EX_1)^2)+\frac13 E\left(X_1\right)E\left(X_2\right)+\frac13E\left(X_3\right)E\left(X_1\right)-5.6 = \frac13\cdot 6.9 + \frac13\cdot 5.6 + \frac13 6.3-5.6=\frac{13}{15}$
+- Falta calcular la covarianza entre $X$ y $W$. $$Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}$$
 
-- Para el segundo, tenemos $Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8$, y de manera análoga, obtenemos que $Cov(X_2, W) =\frac{1}{15}$
+Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - EX_1 \cdot EW$.
+$$E\left(X_1\frac{X_1+X_2+X_3}{3}\right)-0.7E\left(\frac{X_1+X_2+X_3}{3}\right)=\frac13E(X_1^2+X_1X_2+X_1X_3)-\frac{0.7}{3}(EX_1+EX_2+EX_3)=$$
+
+
+$$\frac13\left[E(X_1^2)+E(X_1X_2)+E(X_1X_3)\right]-0.7\frac13(0.7+0.8+0.9)=$$
+$$\frac13\left[Var(X_1)+(EX_1)^2+EX_1EX_2 + Cov(X_1,X_2)+EX_1EX_3 + Cov(X_1,X_3)\right]-0.7\cdot0.8=$$
+$$\frac13\left[2+0.7^2+0.7\cdot0.8 -1 + 0.7\cdot0.9\right]-0.7\cdot0.8=\frac13\frac{67}{25}-\frac{14}{25}=\frac13.$$
+
+
+Para el segundo, tenemos $Cov(X_2, W) = E(X_2W) - EX_2 \cdot EW$.
+
+$$E\left(X_2\frac{X_1+X_2+X_3}{3}\right)-0.8E\left(\frac{X_1+X_2+X_3}{3}\right)=\frac13E(X_1X_2+X_2^2+X_2X_3)-\frac{0.8}{3}(EX_1+EX_2+EX_3)=$$
+$$\frac13\left[E(X_1X_2)+E(X_2^2)+E(X_2X_3)\right]-0.8\frac13(0.7+0.8+0.9)=$$
+$$\frac13\left[EX_1EX_2 + Cov(X_1, X_2) + Var(X_2) + (EX_2)^2 +EX_2EX_3 + Cov(X_2,X_3)\right]-0.8\cdot0.8=$$
+$$\frac13\left[0.7\cdot0.8 - 1+ 2 + 0.8^2 + 0.8\cdot0.9\right]-0.8^2=\frac13\frac{73}{25}-\frac{16}{25}=\frac13.$$
+
+
+
+Juntándolo todo tenemos que $$\Sigma_{12} = \begin{pmatrix}\frac13\\ \frac13\end{pmatrix}, \qquad \Sigma_{21} = \begin{pmatrix}\frac13 & \frac13\end{pmatrix}.$$
 
 Obtenemos así la expresión $$\Sigma=\begin{pmatrix}
-2 & -1 & \frac{13}{15}\\
--1 & 2 & \frac{1}{15}\\
-\frac{13}{15} & \frac{1}{15} & 5
+2 & -1 & \frac13\\
+-1 & 2 & \frac13\\
+\frac13 & \frac13 & \frac13
 \end{pmatrix}.$$
 
 En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $$E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
 
-$$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac{13}{15}\\\frac{1}{15}\end{pmatrix}\frac15(1-0.8)=\begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}\approx \begin{pmatrix}0.7346667\\0.8026667\end{pmatrix}$$
+$$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3(1-0.8)=\begin{pmatrix}0.9\\1\end{pmatrix}.$$
 
-$$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}5^{-1}\begin{pmatrix}\frac{551}{750}&\frac{301}{375}\end{pmatrix}=\begin{pmatrix}2.10795 & -1.11794\\-1.11794 & 2.12885\end{pmatrix}$$
+$$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3\begin{pmatrix}\frac13&\frac13\end{pmatrix}=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}\frac13 & \frac13\\\frac13 & \frac13\end{pmatrix} = \begin{pmatrix}\frac73 & -\frac23\\-\frac23 & \frac73\end{pmatrix}.$$
 
 
 ## Apartado 3
 
 **¿Son $X_2$ y $W$ independientes?**
 
-No lo son, hemos calculado anteriormente la esperanza $E[X_2W]$ y hemos obtenido un valor de $\frac{97}{15}\approx 6.46667$. En cambio, $E[X_2]\cdot E[W] = 0.8\cdot0.8=6.4$. Claremente, $E[X_2W] \ne E[X_2]\cdot E[W]$, entonces podemos afirmar que no son independientes.
+No lo son, tenemos la situación $X_2 \sim N(0.8, \sqrt2)$ y $W\sim N(0.8, \sqrt{1/3})$.
+
+Sabemos que si son independientes, se satisface que $E[X_2W] = E[X_2]\cdot E[W]$, entonces el contrarrecíproco sería: si $E[X_2W] \ne E[X_2]\cdot E[W]$, entonces no son independientes.
+
+Hemos calculado anteriormente la esperanza $E[X_2W]$ y hemos obtenido un valor de $\frac{73}{75}\approx 0.973333$. En cambio, $E[X_2]\cdot E[W] = 0.8\cdot0.8=6.4$. Claramente, $E[X_2W] \ne E[X_2]\cdot E[W]$, entonces podemos afirmar que no son independientes.
 
 Tiene sentido ya que una está formada a partir de la otra.

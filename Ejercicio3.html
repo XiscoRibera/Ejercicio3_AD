@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><strong>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, y <span class="math inline">\(X_3\)</span> los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres nivele es <span class="math inline">\(N_3(\mu, \Sigma)\)</span> con <span class="math inline">\(\mu=(0.7, 0.8, 0.9)'\)</span> y</strong> <span class="math display">\[\Sigma=\begin{pmatrix}
+<p><strong>Sean <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, y <span class="math inline">\(X_3\)</span> los niveles de solvencia de tres bancos españoles. Supongamos que la distribución conjunta de los tres niveles es <span class="math inline">\(N_3(\mu, \Sigma)\)</span> con <span class="math inline">\(\mu=(0.7, 0.8, 0.9)'\)</span> y</strong> <span class="math display">\[\Sigma=(\sigma_{ij})=\begin{pmatrix}
 2 &amp; -1 &amp; 0\\
 -1 &amp; 2 &amp; 0\\
 0 &amp; 0 &amp; 1
@@ -77,42 +77,51 @@ ul.task-list li input[type="checkbox"] {
 <section id="apartado-1" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-1">Apartado 1</h2>
 <p><strong>Calcúlese la distribución del nivel de solvencia medio W.</strong></p>
-<p>Notemos que las variables <span class="math inline">\(X_1, X_2, X_3\)</span> tienen distribuciones normales <span class="math inline">\(N(0.7, \sqrt{2}), N(0.8, \sqrt{2}), N(0.9, 1)\)</span> respectivamente</p>
-<p>Como son independientes, <span class="math inline">\(X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 1})=N(2.4, \sqrt{5})\)</span>. Por último, al dividir entre 3, obtenemos que <span class="math inline">\(W\)</span> sigue una distribución normal <span class="math inline">\(N(0.8, \sqrt{5})\)</span>.</p>
+<p>Dado que la distribución conjunta de <span class="math inline">\((X_1, X_2, X_3)'\)</span> es normal multivariante, cada variable <span class="math inline">\(X_i\)</span> és normal univariante con media <span class="math inline">\(\mu_i\)</span> y <span class="math inline">\(\sigma_i^2=\sigma_{ii}\)</span>. Entonces, <span class="math display">\[X_1 \sim N(0.7, \sqrt2), \quad X_2 \sim N(0.8, \sqrt2), \quad X_3 \sim N(0.9, 1)\]</span> Sabemos que una combinación lineal de las tres variables será normal univariante, así que <span class="math inline">\(W=\frac13X_1 + \frac13X_2 + \frac13X_3\)</span> será normal univariante.</p>
 </section>
 <section id="apartado-2" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-2">Apartado 2</h2>
 <p><strong>Encuéntrese la distribución de <span class="math inline">\((X_1, X_2)'\)</span> condicionada a que <span class="math inline">\(W\)</span> vale 1.</strong></p>
-<p>Llamemos <span class="math inline">\(Y=(X, W)\)</span>, donde <span class="math inline">\(X=(X_1, X_2)\)</span>. Entonces podemos escribir la matriz de covarianzas de <span class="math inline">\(Y\)</span> particionada de la forma <span class="math display">\[\begin{pmatrix}
+<p>Seguiremos el esquema de la ayuda del ejercicio.</p>
+<p>Llamemos <span class="math inline">\(Y=(X, W)\)</span>, donde <span class="math inline">\(X=(X_1, X_2)\)</span>. Entonces podemos escribir la matriz de covarianzas de <span class="math inline">\(Y\)</span> de la forma <span class="math display">\[\begin{pmatrix}
 \Sigma_{11} &amp; \Sigma_{12}\\
 \Sigma_{21} &amp; \Sigma_{22}
 \end{pmatrix}\]</span> donde <span class="math inline">\(\Sigma_{11} = Var(X) \in \mathcal{M}_{2\times2}, \Sigma_{22}=Var(W)\in \mathcal{M}_{1\times1}, \Sigma_{12}=Cov(X, W) \in \mathcal{M}_{2\times1}, \Sigma_{21}=\Sigma_{12}'\in \mathcal{M}_{1\times2}\)</span>.</p>
-<p>El vector <span class="math inline">\(X=(X_1, X_2)\)</span> tiene una distribución <span class="math inline">\(N_2(\mu_X, \Sigma_X)\)</span>, donde <span class="math inline">\(\mu_X=(0.7, 0.8)'\)</span> y <span class="math display">\[\Sigma_X=\begin{pmatrix}
+<p>Vamos a calcular cada una de ellas:</p>
+<ul>
+<li><p>Para <span class="math inline">\(\Sigma_{11}\)</span>, necesitamos la matriz de covarianzas de <span class="math inline">\(X=(X_1, X_2)\)</span>, que tiene una distribución normal bivariante con vector de medias<span class="math inline">\((0.7, 0.8)'\)</span> y varianza <span class="math display">\[\begin{pmatrix}
 2 &amp; -1\\
 -1 &amp; 2
-\end{pmatrix}.\]</span> Por otra parte, hemos visto que <span class="math inline">\(W\)</span> sigue una distribución <span class="math inline">\(N(\mu_W, \Sigma_W)\)</span>, con <span class="math inline">\(\mu_W=0.8\)</span>, <span class="math inline">\(\Sigma_W=5\)</span>. Entonces, <span class="math inline">\(\Sigma_{11} = Var(X) = \Sigma_X\)</span>. En el caso de <span class="math inline">\(W\)</span>, <span class="math inline">\(\Sigma_{22} = 5\)</span>. Falta calcular la covarianza entre <span class="math inline">\(X\)</span> y <span class="math inline">\(W\)</span>. <span class="math display">\[Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}\]</span></p>
-<ul>
-<li>Para el primer término, sabemos que <span class="math inline">\(Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8 = E\left(X_1\cdot\left(\frac{X_1+X_2+X_3}{3}\right)\right)-5.6 =\)</span></li>
+\end{pmatrix}.\]</span> Entonces, <span class="math display">\[\Sigma_{11} = \begin{pmatrix}
+2 &amp; -1\\
+-1 &amp; 2
+\end{pmatrix}.\]</span></p></li>
+<li><p>En el caso de <span class="math inline">\(W\)</span>, solamente sabemos que es el promedio de las tres variables iniciales. <span class="math display">\[Var(W)=Var\left(\frac{X_1+X_2+X_3}{3}\right)=\frac19Var(X_1+X_2+X_3) = \frac19\left(Var(X_1+X_2) + Var(X_3) + 2Cov(X_1+X_2, X_3)\right)\]</span> <span class="math display">\[= \frac19\left(Var(X_1) + Var(X_2) + 2Cov(X_1, X_2) + Var(X_3) + 2Cov(X_1, X_3) + 2Cov(X_2, X_3)\right).\]</span> De la matriz de covarianzas, tenemos que <span class="math inline">\(Cov(X_i, X_3) = 0, i=1,2\)</span>, y que <span class="math inline">\(Cov(X_1, X_2) = -1\)</span>. También tenemos en la diagonal las varianzas, entonces</p></li>
 </ul>
-<p><span class="math inline">\(E\left(\frac{X_1^2}{3}+\frac{X_1X_2}{3}+\frac{X_3X_1}{3}\right)-5.6 = E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=\)</span></p>
-<p><span class="math inline">\(E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=\frac13E\left(X_1^2\right)+\frac13 E\left(X_1X_2\right)+\frac13E\left(X_3X_1\right)-5.6=\)</span></p>
-<p><span class="math inline">\(=\frac13(Var(X_1)+(EX_1)^2)+\frac13 E\left(X_1\right)E\left(X_2\right)+\frac13E\left(X_3\right)E\left(X_1\right)-5.6 = \frac13\cdot 6.9 + \frac13\cdot 5.6 + \frac13 6.3-5.6=\frac{13}{15}\)</span></p>
+<p><span class="math display">\[\frac19\left(2 + 2 -2 + 1\right) = \frac39 = \frac13.\]</span></p>
 <ul>
-<li>Para el segundo, tenemos <span class="math inline">\(Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8\)</span>, y de manera análoga, obtenemos que <span class="math inline">\(Cov(X_2, W) =\frac{1}{15}\)</span></li>
+<li>Falta calcular la covarianza entre <span class="math inline">\(X\)</span> y <span class="math inline">\(W\)</span>. <span class="math display">\[Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}\]</span></li>
 </ul>
+<p>Para el primer término, sabemos que <span class="math inline">\(Cov(X_1, W) = E(X_1W) - EX_1 \cdot EW\)</span>. <span class="math display">\[E\left(X_1\frac{X_1+X_2+X_3}{3}\right)-0.7E\left(\frac{X_1+X_2+X_3}{3}\right)=\frac13E(X_1^2+X_1X_2+X_1X_3)-\frac{0.7}{3}(EX_1+EX_2+EX_3)=\]</span></p>
+<p><span class="math display">\[\frac13\left[E(X_1^2)+E(X_1X_2)+E(X_1X_3)\right]-0.7\frac13(0.7+0.8+0.9)=\]</span> <span class="math display">\[\frac13\left[Var(X_1)+(EX_1)^2+EX_1EX_2 + Cov(X_1,X_2)+EX_1EX_3 + Cov(X_1,X_3)\right]-0.7\cdot0.8=\]</span> <span class="math display">\[\frac13\left[2+0.7^2+0.7\cdot0.8 -1 + 0.7\cdot0.9\right]-0.7\cdot0.8=\frac13\frac{67}{25}-\frac{14}{25}=\frac13.\]</span></p>
+<p>Para el segundo, tenemos <span class="math inline">\(Cov(X_2, W) = E(X_2W) - EX_2 \cdot EW\)</span>.</p>
+<p><span class="math display">\[E\left(X_2\frac{X_1+X_2+X_3}{3}\right)-0.8E\left(\frac{X_1+X_2+X_3}{3}\right)=\frac13E(X_1X_2+X_2^2+X_2X_3)-\frac{0.8}{3}(EX_1+EX_2+EX_3)=\]</span> <span class="math display">\[\frac13\left[E(X_1X_2)+E(X_2^2)+E(X_2X_3)\right]-0.8\frac13(0.7+0.8+0.9)=\]</span> <span class="math display">\[\frac13\left[EX_1EX_2 + Cov(X_1, X_2) + Var(X_2) + (EX_2)^2 +EX_2EX_3 + Cov(X_2,X_3)\right]-0.8\cdot0.8=\]</span> <span class="math display">\[\frac13\left[0.7\cdot0.8 - 1+ 2 + 0.8^2 + 0.8\cdot0.9\right]-0.8^2=\frac13\frac{73}{25}-\frac{16}{25}=\frac13.\]</span></p>
+<p>Juntándolo todo tenemos que <span class="math display">\[\Sigma_{12} = \begin{pmatrix}\frac13\\ \frac13\end{pmatrix}, \qquad \Sigma_{21} = \begin{pmatrix}\frac13 &amp; \frac13\end{pmatrix}.\]</span></p>
 <p>Obtenemos así la expresión <span class="math display">\[\Sigma=\begin{pmatrix}
-2 &amp; -1 &amp; \frac{13}{15}\\
--1 &amp; 2 &amp; \frac{1}{15}\\
-\frac{13}{15} &amp; \frac{1}{15} &amp; 5
+2 &amp; -1 &amp; \frac13\\
+-1 &amp; 2 &amp; \frac13\\
+\frac13 &amp; \frac13 &amp; \frac13
 \end{pmatrix}.\]</span></p>
 <p>En este punto, la distribución de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(W=1\)</span> es normal con vector de esperanzas <span class="math display">\[E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)\]</span> y matriz de covarianzas <span class="math display">\[Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\]</span></p>
-<p><span class="math display">\[E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac{13}{15}\\\frac{1}{15}\end{pmatrix}\frac15(1-0.8)=\begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}\approx \begin{pmatrix}0.7346667\\0.8026667\end{pmatrix}\]</span></p>
-<p><span class="math display">\[Var(X|W=1)=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}5^{-1}\begin{pmatrix}\frac{551}{750}&amp;\frac{301}{375}\end{pmatrix}=\begin{pmatrix}2.10795 &amp; -1.11794\\-1.11794 &amp; 2.12885\end{pmatrix}\]</span></p>
+<p><span class="math display">\[E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3(1-0.8)=\begin{pmatrix}0.9\\1\end{pmatrix}.\]</span></p>
+<p><span class="math display">\[Var(X|W=1)=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3\begin{pmatrix}\frac13&amp;\frac13\end{pmatrix}=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}\frac13 &amp; \frac13\\\frac13 &amp; \frac13\end{pmatrix} = \begin{pmatrix}\frac73 &amp; -\frac23\\-\frac23 &amp; \frac73\end{pmatrix}.\]</span></p>
 </section>
 <section id="apartado-3" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-3">Apartado 3</h2>
 <p><strong>¿Son <span class="math inline">\(X_2\)</span> y <span class="math inline">\(W\)</span> independientes?</strong></p>
-<p>No lo son, hemos calculado anteriormente la esperanza <span class="math inline">\(E[X_2W]\)</span> y hemos obtenido un valor de <span class="math inline">\(\frac{97}{15}\approx 6.46667\)</span>. En cambio, <span class="math inline">\(E[X_2]\cdot E[W] = 0.8\cdot0.8=6.4\)</span>. Claremente, <span class="math inline">\(E[X_2W] \ne E[X_2]\cdot E[W]\)</span>, entonces podemos afirmar que no son independientes.</p>
+<p>No lo son, tenemos la situación <span class="math inline">\(X_2 \sim N(0.8, \sqrt2)\)</span> y <span class="math inline">\(W\sim N(0.8, \sqrt{1/3})\)</span>.</p>
+<p>Sabemos que si son independientes, se satisface que <span class="math inline">\(E[X_2W] = E[X_2]\cdot E[W]\)</span>, entonces el contrarrecíproco sería: si <span class="math inline">\(E[X_2W] \ne E[X_2]\cdot E[W]\)</span>, entonces no son independientes.</p>
+<p>Hemos calculado anteriormente la esperanza <span class="math inline">\(E[X_2W]\)</span> y hemos obtenido un valor de <span class="math inline">\(\frac{73}{75}\approx 0.973333\)</span>. En cambio, <span class="math inline">\(E[X_2]\cdot E[W] = 0.8\cdot0.8=6.4\)</span>. Claramente, <span class="math inline">\(E[X_2W] \ne E[X_2]\cdot E[W]\)</span>, entonces podemos afirmar que no son independientes.</p>
 <p>Tiene sentido ya que una está formada a partir de la otra.</p>
 </section>
 
