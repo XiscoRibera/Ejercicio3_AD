@@ -17,7 +17,7 @@ editor: visual
 
 Notemos que las variables $X_1, X_2, X_3$ tienen distribuciones normales $N(0.7, \sqrt{2}), N(0.8, \sqrt{2}), N(0.9, 1)$ respectivamente
 
-Como son independientes, $X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 1})=N(2.4, \sqrt{5})$. Por último, al hacer el cociente con 3, obtenemos que $W$ sigue una distribución normal $N(0.8, \sqrt{5})$.
+Como son independientes, $X_1 + X_2 + X_3 \sim N(0.7 + 0.8 + 0.9, \sqrt{2 + 2 + 1})=N(2.4, \sqrt{5})$. Por último, al dividir entre 3, obtenemos que $W$ sigue una distribución normal $N(0.8, \sqrt{5})$.
 
 
 ## Apartado 2
@@ -34,13 +34,15 @@ El vector $X=(X_1, X_2)$ tiene una distribución $N_2(\mu_X, \Sigma_X)$, donde $
 -1 & 2
 \end{pmatrix}.$$ Por otra parte, hemos visto que $W$ sigue una distribución $N(\mu_W, \Sigma_W)$, con $\mu_W=0.8$, $\Sigma_W=5$. Entonces, $\Sigma_{11} = Var(X) = \Sigma_X$. En el caso de $W$, $\Sigma_{22} = 5$. Falta calcular la covarianza entre $X$ y $W$. $$Cov(X, W) = \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}$$
 
-- Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8 = E\left(X_1\cdot\left(\frac{X_1+X_2+X_3}{3}\right)\right)-5.6 = E\left(\frac{X_1^2}{3}+\frac{X_1X_2}{3}+\frac{X_3X_1}{3}\right)-5.6 =$
+- Para el primer término, sabemos que $Cov(X_1, W) = E(X_1W) - \mu_{X_1}\mu_W = E(X_1W) - 0.7\cdot0.8 = E\left(X_1\cdot\left(\frac{X_1+X_2+X_3}{3}\right)\right)-5.6 =$ 
 
-$= E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=\frac13E\left(X_1^2\right)+\frac13 E\left(X_1X_2\right)+\frac13E\left(X_3X_1\right)-5.6=$
+$E\left(\frac{X_1^2}{3}+\frac{X_1X_2}{3}+\frac{X_3X_1}{3}\right)-5.6 = E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=$
+
+$E\left(\frac{X_1^2}{3}\right)+E\left(\frac{X_1X_2}{3}\right)+E\left(\frac{X_3X_1}{3}\right)-5.6=\frac13E\left(X_1^2\right)+\frac13 E\left(X_1X_2\right)+\frac13E\left(X_3X_1\right)-5.6=$
 
 $=\frac13(Var(X_1)+(EX_1)^2)+\frac13 E\left(X_1\right)E\left(X_2\right)+\frac13E\left(X_3\right)E\left(X_1\right)-5.6 = \frac13\cdot 6.9 + \frac13\cdot 5.6 + \frac13 6.3-5.6=\frac{13}{15}$
 
-- Para el segundo, tenemos $Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8$, y de manera analoga, obtenemos que $Cov(X_2, W) =\frac{1}{15}$
+- Para el segundo, tenemos $Cov(X_2, W) = E(X_2W) - \mu_{X_2}\mu_W = E(X_2W) - 0.8\cdot0.8$, y de manera análoga, obtenemos que $Cov(X_2, W) =\frac{1}{15}$
 
 Obtenemos así la expresión $$\Sigma=\begin{pmatrix}
 2 & -1 & \frac{13}{15}\\
@@ -48,7 +50,7 @@ Obtenemos así la expresión $$\Sigma=\begin{pmatrix}
 \frac{13}{15} & \frac{1}{15} & 5
 \end{pmatrix}.$$
 
-En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
+En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $$E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
 
 $$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}(1-0.8)$$
 
