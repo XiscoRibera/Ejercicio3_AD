@@ -52,11 +52,15 @@ Obtenemos así la expresión $$\Sigma=\begin{pmatrix}
 
 En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $$E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
 
-$$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}(1-0.8)$$
+$$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac{13}{15}\\\frac{1}{15}\end{pmatrix}\frac15(1-0.8)=\begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}\approx \begin{pmatrix}0.7346667\\0.8026667\end{pmatrix}$$
 
-$$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}Cov(X_1, W)\\Cov(X_2,W)\end{pmatrix}5^{-1}\begin{pmatrix}Cov(X_1, W) & Cov(X_2,W)\end{pmatrix}$$
+$$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}\frac{551}{750}\\\frac{301}{375}\end{pmatrix}5^{-1}\begin{pmatrix}\frac{551}{750}&\frac{301}{375}\end{pmatrix}=\begin{pmatrix}2.10795 & -1.11794\\-1.11794 & 2.12885\end{pmatrix}$$
 
 
 ## Apartado 3
 
 **¿Son $X_2$ y $W$ independientes?**
+
+No lo son, hemos calculado anteriormente la esperanza $E[X_2W]$ y hemos obtenido un valor de $\frac{97}{15}\approx 6.46667$. En cambio, $E[X_2]\cdot E[W] = 0.8\cdot0.8=6.4$. Claremente, $E[X_2W] \ne E[X_2]\cdot E[W]$, entonces podemos afirmar que no son independientes.
+
+Tiene sentido ya que una está formada a partir de la otra.
