@@ -124,9 +124,9 @@ ul.task-list li input[type="checkbox"] {
 -1 &amp; 2 &amp; \frac13\\
 \frac13 &amp; \frac13 &amp; \frac13
 \end{pmatrix}.\]</span></p>
-<p>En este punto, la distribución de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(W=1\)</span> es normal con vector de esperanzas <span class="math display">\[E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)\]</span> y matriz de covarianzas <span class="math display">\[Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\]</span></p>
+<p>En este punto, la distribución de <span class="math inline">\(X\)</span> condicionada a <span class="math inline">\(W=1\)</span> es normal con vector de esperanzas <span class="math display">\[E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)\]</span> y matriz de covarianzas <span class="math display">\[Var(X|W=1)=\Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\]</span></p>
 <p><span class="math display">\[E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3(1-0.8)=\begin{pmatrix}0.9\\1\end{pmatrix}.\]</span></p>
-<p><span class="math display">\[Var(X|W=1)=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3\begin{pmatrix}\frac13&amp;\frac13\end{pmatrix}=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} + \begin{pmatrix}\frac13 &amp; \frac13\\\frac13 &amp; \frac13\end{pmatrix} = \begin{pmatrix}\frac73 &amp; -\frac23\\-\frac23 &amp; \frac73\end{pmatrix}.\]</span></p>
+<p><span class="math display">\[Var(X|W=1)=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} - \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3\begin{pmatrix}\frac13&amp;\frac13\end{pmatrix}=\begin{pmatrix}2 &amp; -1\\-1 &amp; 2\end{pmatrix} - \begin{pmatrix}\frac13 &amp; \frac13\\\frac13 &amp; \frac13\end{pmatrix} = \begin{pmatrix}\frac53 &amp; -\frac43\\-\frac43 &amp; \frac53\end{pmatrix}.\]</span></p>
 </section>
 <section id="apartado-3" class="level2">
 <h2 class="anchored" data-anchor-id="apartado-3">Apartado 3</h2>

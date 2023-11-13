@@ -67,11 +67,11 @@ Obtenemos así la expresión $$\Sigma=\begin{pmatrix}
 \frac13 & \frac13 & \frac13
 \end{pmatrix}.$$
 
-En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $$E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} + \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
+En este punto, la distribución de $X$ condicionada a $W=1$ es normal con vector de esperanzas $$E[X|W=1]=\mu_X + \Sigma_{12}\Sigma_{22}^{-1}(1-\mu_W)$$ y matriz de covarianzas $$Var(X|W=1)=\Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$$
 
 $$E[X|W=1]=\begin{pmatrix}0.7\\0.8\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3(1-0.8)=\begin{pmatrix}0.9\\1\end{pmatrix}.$$
 
-$$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3\begin{pmatrix}\frac13&\frac13\end{pmatrix}=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} + \begin{pmatrix}\frac13 & \frac13\\\frac13 & \frac13\end{pmatrix} = \begin{pmatrix}\frac73 & -\frac23\\-\frac23 & \frac73\end{pmatrix}.$$
+$$Var(X|W=1)=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} - \begin{pmatrix}\frac13\\\frac13\end{pmatrix}3\begin{pmatrix}\frac13&\frac13\end{pmatrix}=\begin{pmatrix}2 & -1\\-1 & 2\end{pmatrix} - \begin{pmatrix}\frac13 & \frac13\\\frac13 & \frac13\end{pmatrix} = \begin{pmatrix}\frac53 & -\frac43\\-\frac43 & \frac53\end{pmatrix}.$$
 
 ## Apartado 3
 
